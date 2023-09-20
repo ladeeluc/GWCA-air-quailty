@@ -1,0 +1,6 @@
+pystac-client
+planetary-computer
+pandas
+pyarrow
+fsspec
+adlfs

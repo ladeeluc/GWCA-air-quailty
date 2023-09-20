@@ -13,10 +13,14 @@ print(f"Found {len(items)} item")
 item = items[0]
 item
 
-
-
 asset = item.assets["data"]
 df = pd.read_parquet(
     asset.href, storage_options=asset.extra_fields["table:storage_options"]
 )
-print(df)
+
+# filter where LocationName is "Irving & Clark (EB)"
+df = df[df["LocationName"] == "Irving & Clark (EB)"]
+
+# save data frame to csv
+df.to_csv("irving-clark-sensor.csv", index=False)
+print("Saved data to irving-clark-sensor.csv")
